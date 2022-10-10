@@ -1,6 +1,7 @@
 import React from "react";
 
 const CountN = (props) => {
+    console.log(props.children)
     console.log(props)
     return (
         <React.Fragment>
@@ -15,4 +16,4 @@ const CountN = (props) => {
     );
 };
 
-export default CountN;
+export default React.memo(CountN);
