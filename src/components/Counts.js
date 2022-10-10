@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 
 const initialState = {
     countOne: 0,
-    //countTwo: 0
+    countTwo: 0
 };
 const reducer = (state, action) => {
     console.log(state)
@@ -11,6 +11,11 @@ const reducer = (state, action) => {
             return {...state, countOne: state.countOne + action.value};
         case 'decrement':
             return {...state, countOne: state.countOne - action.value};
+        case 'increment2':
+            return {...state, countTwo: state.countTwo + action.value};
+        case 'decrement2':
+            return {...state, countTwo: state.countTwo - action.value};
+        
         case 'raz':
                 return initialState;
         default:
@@ -46,11 +51,11 @@ export default function Counts() {
                             <span className="font-medium">Compteur</span> {count.countOne}
                         </div>
                     </div>
-                    <button className={styleTailwind + ' text-green-500'} onClick={() => dispatch({type:'increment', value: 1})}>+ Incremente +</button>
+                    <button className={styleTailwind + ' text-green-500'} onClick={() => dispatch({type:'increment', value: 3})}>+ Incremente +</button>
                     <button className={styleTailwind + ' text-red-500'} onClick={() => dispatch({type:'decrement', value: 1})}>- Decremente -</button>
                 </div>
                 <button className={styleTailwind + ' text-white w-full h-40'} onClick={() => dispatch({type:'raz', value:0})}>RAZ</button>
-                {/*<div>
+                <div>
                     <div
                         className="flex bg-red-100 rounded-lg p-4 text-sm text-red-700"
                         role="alert"
@@ -68,12 +73,12 @@ export default function Counts() {
                             ></path>
                         </svg>
                         <div>
-                            <span className="font-medium">Compteur</span> {count}
+                            <span className="font-medium">Compteur</span> {count.countTwo}
                         </div>
                     </div>
-                    <button className={styleTailwind + ' text-green-500'} onClick={() => dispatch({type:'increment', value: 1})}>+ Incremente +</button>
-                    <button className={styleTailwind + ' text-red-500'} onClick={() => dispatch({type:'decrement', value: 1})}>- Decremente -</button>
-    </div>*/}
+                    <button className={styleTailwind + ' text-green-500'} onClick={() => dispatch({type:'increment2', value: 1})}>+ Incremente +</button>
+                    <button className={styleTailwind + ' text-red-500'} onClick={() => dispatch({type:'decrement2', value: 10})}>- Decremente -</button>
+    </div>
             </div>
         </div>
     );
