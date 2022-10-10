@@ -53,7 +53,7 @@
     "build": "npm run watch:css && node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "watch:css": "postcss src/index.css -o src/App.css",
-    "cssdev": "postcss src/index.css -o src/App.css --watch"
+    "cssdev": "postcss src/index.css -o src/App.css"
     
   },
   "jest": {

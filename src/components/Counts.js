@@ -1,14 +1,18 @@
 import React, { useReducer } from "react";
 
-const initialState = 0;
+const initialState = {
+    countOne: 0,
+    //countTwo: 0
+};
 const reducer = (state, action) => {
-    switch (action) {
+    console.log(state)
+    switch (action.type) {
         case 'increment':
-            return state +1;
+            return {...state, countOne: state.countOne + action.value};
         case 'decrement':
-            return state - 1;
+            return {...state, countOne: state.countOne - action.value};
         case 'raz':
-                return state = 0;
+                return initialState;
         default:
             throw new Error("Action dispache counter doesn't existe");
     }
@@ -20,30 +24,57 @@ export default function Counts() {
     const [count, dispatch] = useReducer(reducer, initialState);
     return (
         <div>
-            <div
-                className="flex bg-red-100 rounded-lg p-4 text-sm text-red-700"
-                role="alert"
-            >
-                <svg
-                    className="w-5 h-5 inline mr-3"
-                    fill="currentColor"
-                    viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        fillRule="evenodd"
-                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                        clipRule="evenodd"
-                    ></path>
-                </svg>
+            <div className="gap-8 columns-3 m-7">
                 <div>
-                    <span className="font-medium">Compteur</span> {count}
+                    <div
+                        className="flex bg-red-100 rounded-lg p-4 text-sm text-red-700"
+                        role="alert"
+                    >
+                        <svg
+                            className="w-5 h-5 inline mr-3"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                clipRule="evenodd"
+                            ></path>
+                        </svg>
+                        <div>
+                            <span className="font-medium">Compteur</span> {count.countOne}
+                        </div>
+                    </div>
+                    <button className={styleTailwind + ' text-green-500'} onClick={() => dispatch({type:'increment', value: 1})}>+ Incremente +</button>
+                    <button className={styleTailwind + ' text-red-500'} onClick={() => dispatch({type:'decrement', value: 1})}>- Decremente -</button>
                 </div>
+                <button className={styleTailwind + ' text-white w-full h-40'} onClick={() => dispatch({type:'raz', value:0})}>RAZ</button>
+                {/*<div>
+                    <div
+                        className="flex bg-red-100 rounded-lg p-4 text-sm text-red-700"
+                        role="alert"
+                    >
+                        <svg
+                            className="w-5 h-5 inline mr-3"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                fillRule="evenodd"
+                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                                clipRule="evenodd"
+                            ></path>
+                        </svg>
+                        <div>
+                            <span className="font-medium">Compteur</span> {count}
+                        </div>
+                    </div>
+                    <button className={styleTailwind + ' text-green-500'} onClick={() => dispatch({type:'increment', value: 1})}>+ Incremente +</button>
+                    <button className={styleTailwind + ' text-red-500'} onClick={() => dispatch({type:'decrement', value: 1})}>- Decremente -</button>
+    </div>*/}
             </div>
-
-            <button className={styleTailwind + ' text-green-500'} onClick={() => dispatch('increment')}>+ Incremente +</button>
-            <button className={styleTailwind + ' text-red-500'} onClick={() => dispatch('decrement')}>- Decremente -</button>
-            <button className={styleTailwind + ' text-white'} onClick={() => dispatch('raz')}>RAZ</button>
         </div>
     );
 }
