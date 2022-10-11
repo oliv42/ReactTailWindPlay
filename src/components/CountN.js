@@ -2,7 +2,7 @@ import React from "react";
 
 const CountN = (props) => {
     console.log(props.children)
-    console.log(props)
+    // console.log(props)
     return (
         <React.Fragment>
             <p className="text-xl">{props.count}%</p>

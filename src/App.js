@@ -8,7 +8,7 @@ const App = () => {
         value: 0,
         btnColor: "emerald-300",
         hoverBtnColor: "emerald-200",
-        increment: 25,
+        increment: 15,
     });
     const [countTwo, setcountTwo] = useState({
         value: 0,
