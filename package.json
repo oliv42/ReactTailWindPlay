@@ -3,13 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "autoprefixer": "6.7.2",
-    "postcss": "^8.4.17",
-    "tailwindcss": "^3.1.8",
     "babel-core": "6.22.1",
     "babel-eslint": "7.1.1",
     "babel-jest": "18.0.0",
@@ -38,10 +37,12 @@
     "jest": "18.1.0",
     "json-loader": "0.5.4",
     "object-assign": "4.1.1",
+    "postcss": "^8.4.17",
     "postcss-loader": "1.2.2",
     "promise": "7.1.1",
     "react-dev-utils": "^0.5.2",
     "style-loader": "0.13.1",
+    "tailwindcss": "^3.1.8",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
     "webpack-dev-server": "1.16.2",
@@ -53,8 +54,7 @@
     "build": "npm run watch:css && node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "watch:css": "postcss src/index.css -o src/App.css",
-    "cssdev": "postcss src/index.css -o src/App.css --watch"
-    
+    "cssdev": "postcss src/index.css -o src/App.css"
   },
   "jest": {
     "collectCoverageFrom": [
