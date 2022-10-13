@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Search from "./Search";
 import useUpdateDocTitle from "../hooks/useUpdateDocTitle";
+import TableUsers from "./TableUsers";
 
 export default function MyContacts() {
     const [search, setSearch] = useState("");
@@ -22,15 +23,18 @@ export default function MyContacts() {
     useUpdateDocTitle(search);
 
     const msgDisplay = (msg, color) => {
-        return (
-            <p style={{textAlign: 'center', color: color}}>{msg}</p>
-        )
-    }
-    console.log(user)
+        return <p style={{ textAlign: "center", color: color }}>{msg}</p>;
+    };
+    console.log(user);
     return (
         <React.Fragment>
-
-           { isLoading? msgDisplay('Veuillez patienté', 'red'):<Search searchStr={search} searchHandler={handleChange} />}
+            {isLoading ? (
+                msgDisplay("Veuillez patienté", "red")
+            ) : (
+                <Search searchStr={search} searchHandler={handleChange} />
+            )}
+            <hr/>
+            {<TableUsers dataArray={user}/>}
         </React.Fragment>
     );
 }

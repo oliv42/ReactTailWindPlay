@@ -1,8 +1,32 @@
 import React from 'react'
+import '../css/table.css'
 
-const TableUsers = () => {
+const TableUsers = ({dataArray} ) => {
   return (
-    <div>TableUsers</div>
+    <table id='table'>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Nom Utilisateur </th>
+                <th>Email</th>
+                <th>Adresse</th>
+            </tr>
+        </thead>
+        <tbody>
+        {
+            dataArray.map(({id, name, username, email, address}) => {
+                return (
+                    <tr key={id}>
+                        <td>{name}</td>
+                        <td>{username}</td>
+                        <td>{email}</td>
+                        <td>{address.street} {address.suite} {address.zipcode} {address.city}</td>
+                    </tr>
+                )
+            })
+        }
+        </tbody>
+    </table>
   )
 }
 
